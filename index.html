@@ -1,11 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Github Page</title>
+    <title>Decode & Parse Tool</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
+<style>
+    body::-webkit-scrollbar {
+        display: none;
+        /* Safari and Chrome */
+    }
+
+    .shadowed {
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    }
+
+    .form-group {
+        margin-bottom: 0 !important;
+    }
+
+    #formattedJsonOutput {
+        font-family: 'Courier New', monospace;
+        white-space: pre-wrap;
+        padding: 10px;
+        background-color: #f4f4f4;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        overflow: auto;
+    }
+</style>
+
 <body>
-    Hello world!
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-2 shadowed">
+                <div class="form-group row p-1">
+                    <label class="col-6 h4 pb-2 text-muted border-bottom border-muted" for="inputJson">Format
+                        JSON:</label>
+                    <textarea class="form-control col-10 rounded-0" id="inputJson" rows="5"
+                        placeholder='{ "key": "value" }'></textarea>
+                    <button class="btn btn-light col-2" onclick="formatJSON()">Format</button>
+                    <textarea class="form-control col-12 rounded-0 user-select-all" id="formattedJsonOutput" rows="5"
+                        readonly></textarea>
+                </div>
+            </div>
+            <div class="col-md-12 mb-2 shadowed">
+                <div class="form-group row p-1">
+                    <label class="col-12 h4 pb-2 text-muted border-bottom border-muted" for="inputUrl">Decode
+                        URL:</label>
+                    <textarea class="form-control col-5 rounded-0" id="inputUrl" rows="5"
+                        placeholder="https://example.com"></textarea>
+                    <textarea class="form-control col-5 rounded-0 user-select-all " id="decodedUrlOutput" rows="5"
+                        readonly></textarea>
+                    <button class="btn btn-light col-2" onclick="decodeURL()">Decode</button>
+                </div>
+            </div>
+            <div class="col-md-12 mb-2 shadowed">
+                <div class="form-group row p-1">
+                    <label class="col-12 h4 pb-2 text-muted border-bottom border-muted" for="inputString">String
+                        length:</label>
+                    <textarea class="form-control col-5 rounded-0" id="inputString" rows="5"
+                        placeholder="Enter your string"></textarea>
+                    <textarea class="form-control col-5 rounded-0 user-select-all" id="stringLengthOutput" rows="5"
+                        readonly></textarea>
+                    <button class="btn btn-light col-2" onclick="getStringLength()">Get</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+        function decodeURL() {
+            const inputUrl = document.getElementById('inputUrl').value;
+            try {
+                const decodedUrl = decodeURIComponent(inputUrl);
+                document.getElementById('decodedUrlOutput').value = decodedUrl;
+            } catch (error) {
+                document.getElementById('decodedUrlOutput').value = 'Error decoding URL';
+            }
+        }
+
+        function getStringLength() {
+            const inputString = document.getElementById('inputString').value;
+            const stringLength = inputString.length;
+            document.getElementById('stringLengthOutput').value = stringLength;
+        }
+
+        function formatJSON() {
+            const inputJson = document.getElementById('inputJson').value;
+            try {
+                const formattedJson = JSON.stringify(JSON.parse(inputJson), null, 4);
+                document.getElementById('formattedJsonOutput').value = formattedJson;
+            } catch (error) {
+                document.getElementById('formattedJsonOutput').value = 'Error formatting JSON';
+            }
+        }
+    </script>
 </body>
+
 </html>
