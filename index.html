@@ -4,36 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Decode & Parse Tool</title>
+    <title>Helper</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
 </head>
-<style>
-    body::-webkit-scrollbar {
-        display: none;
-        /* Safari and Chrome */
-    }
-
-    .shadowed {
-        box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-    }
-
-    .form-group {
-        margin-bottom: 0 !important;
-    }
-
-    #formattedJsonOutput {
-        font-family: 'Courier New', monospace;
-        white-space: pre-wrap;
-        padding: 10px;
-        background-color: #f4f4f4;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        overflow: auto;
-    }
-</style>
 
 <body>
-    <div class="container">
+    <div class="wrapper">
+        <div class="row setting justify-content-center align-items-center">
+            <div class="checkbox-wrapper-35">
+                <input value="private" name="switch" id="live" type="checkbox" class="switch">
+                <label for="live">
+                    <span class="switch-x-text">Live mode is</span>
+                    <span class="switch-x-toggletext">
+                        <span class="switch-x-unchecked"><span class="switch-x-hiddenlabel">Unchecked: </span>Off</span>
+                        <span class="switch-x-checked"><span class="switch-x-hiddenlabel">Checked: </span>On</span>
+                    </span>
+                </label>
+            </div>
+            <div class="checkbox-wrapper-35">
+                <input value="private" name="switch" id="dark" type="checkbox" class="switch">
+                <label for="dark">
+                    <span class="switch-x-text">Dark mode is</span>
+                    <span class="switch-x-toggletext">
+                        <span class="switch-x-unchecked"><span class="switch-x-hiddenlabel">Unchecked: </span>Off</span>
+                        <span class="switch-x-checked"><span class="switch-x-hiddenlabel">Checked: </span>On</span>
+                    </span>
+                </label>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-12 mb-2 shadowed">
                 <div class="form-group row p-1">
@@ -70,35 +69,7 @@
             </div>
         </div>
     </div>
-    <script src="js/bootstrap.min.js"></script>
-
-    <script>
-        function decodeURL() {
-            const inputUrl = document.getElementById('inputUrl').value;
-            try {
-                const decodedUrl = decodeURIComponent(inputUrl);
-                document.getElementById('decodedUrlOutput').value = decodedUrl;
-            } catch (error) {
-                document.getElementById('decodedUrlOutput').value = 'Error decoding URL';
-            }
-        }
-
-        function getStringLength() {
-            const inputString = document.getElementById('inputString').value;
-            const stringLength = inputString.length;
-            document.getElementById('stringLengthOutput').value = stringLength;
-        }
-
-        function formatJSON() {
-            const inputJson = document.getElementById('inputJson').value;
-            try {
-                const formattedJson = JSON.stringify(JSON.parse(inputJson), null, 4);
-                document.getElementById('formattedJsonOutput').value = formattedJson;
-            } catch (error) {
-                document.getElementById('formattedJsonOutput').value = 'Error formatting JSON';
-            }
-        }
-    </script>
+    <script type="module" src="main.js"></script>
 </body>
 
 </html>
