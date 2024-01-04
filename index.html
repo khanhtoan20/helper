@@ -10,62 +10,50 @@
 </head>
 
 <body>
-    <div class="wrapper">
-        <div class="row setting justify-content-center align-items-center">
-            <div class="checkbox-wrapper-35">
-                <input value="private" name="switch" id="live" type="checkbox" class="switch">
-                <label for="live">
-                    <span class="switch-x-text">Live mode is</span>
-                    <span class="switch-x-toggletext">
-                        <span class="switch-x-unchecked"><span class="switch-x-hiddenlabel">Unchecked: </span>Off</span>
-                        <span class="switch-x-checked"><span class="switch-x-hiddenlabel">Checked: </span>On</span>
-                    </span>
-                </label>
-            </div>
-            <div class="checkbox-wrapper-35">
-                <input value="private" name="switch" id="dark" type="checkbox" class="switch">
-                <label for="dark">
-                    <span class="switch-x-text">Dark mode is</span>
-                    <span class="switch-x-toggletext">
-                        <span class="switch-x-unchecked"><span class="switch-x-hiddenlabel">Unchecked: </span>Off</span>
-                        <span class="switch-x-checked"><span class="switch-x-hiddenlabel">Checked: </span>On</span>
-                    </span>
-                </label>
-            </div>
+    <div class="setting">
+        <div class="checkbox-wrapper-35">
+            <input value="private" name="switch" id="live" type="checkbox" class="switch">
+            <label for="live">
+                <span class="switch-x-text">Live mode is</span>
+                <span class="switch-x-toggletext">
+                    <span class="switch-x-unchecked"><span class="switch-x-hiddenlabel">Unchecked: </span>Off</span>
+                    <span class="switch-x-checked"><span class="switch-x-hiddenlabel">Checked: </span>On</span>
+                </span>
+            </label>
         </div>
-        <div class="row">
-            <div class="col-md-12 mb-2 shadowed">
-                <div class="form-group row p-1">
-                    <label class="col-6 h4 pb-2 text-muted border-bottom border-muted" for="inputJson">Format
-                        JSON:</label>
-                    <textarea class="form-control col-10 rounded-0" id="inputJson" rows="5"
-                        placeholder='{ "key": "value" }'></textarea>
-                    <button class="btn btn-light col-2" onclick="formatJSON()">Format</button>
-                    <textarea class="form-control col-12 rounded-0 user-select-all" id="formattedJsonOutput" rows="5"
-                        readonly></textarea>
-                </div>
+        <div class="checkbox-wrapper-35">
+            <input value="private" name="switch" id="dark" type="checkbox" class="switch">
+            <label for="dark">
+                <span class="switch-x-text">Dark mode is</span>
+                <span class="switch-x-toggletext">
+                    <span class="switch-x-unchecked"><span class="switch-x-hiddenlabel">Unchecked: </span>Off</span>
+                    <span class="switch-x-checked"><span class="switch-x-hiddenlabel">Checked: </span>On</span>
+                </span>
+            </label>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="interface">
+            <div class="function shadowed">
+                <label class="func-name" for="inputJson">Format
+                    JSON:</label>
+                <textarea class="func-input" id="inputJson" rows="5" placeholder='{ "key": "value" }'></textarea>
+                <button class="func-action" id="actionJson"></button>
+                <textarea class="func-output" id="formattedJsonOutput" rows="5" readonly></textarea>
             </div>
-            <div class="col-md-12 mb-2 shadowed">
-                <div class="form-group row p-1">
-                    <label class="col-12 h4 pb-2 text-muted border-bottom border-muted" for="inputUrl">Decode
-                        URL:</label>
-                    <textarea class="form-control col-5 rounded-0" id="inputUrl" rows="5"
-                        placeholder="https://example.com"></textarea>
-                    <textarea class="form-control col-5 rounded-0 user-select-all " id="decodedUrlOutput" rows="5"
-                        readonly></textarea>
-                    <button class="btn btn-light col-2" onclick="decodeURL()">Decode</button>
-                </div>
+            <div class="function shadowed">
+                <label class="func-name" for="inputUrl">Decode
+                    URL:</label>
+                <textarea class="func-input" id="inputUrl" rows="2" placeholder="https://example.com"></textarea>
+                <button class="func-action" id="actionUrl"></button>
+                <textarea class="func-output" id="decodedUrlOutput" rows="2" readonly></textarea>
             </div>
-            <div class="col-md-12 mb-2 shadowed">
-                <div class="form-group row p-1">
-                    <label class="col-12 h4 pb-2 text-muted border-bottom border-muted" for="inputString">String
-                        length:</label>
-                    <textarea class="form-control col-5 rounded-0" id="inputString" rows="5"
-                        placeholder="Enter your string"></textarea>
-                    <textarea class="form-control col-5 rounded-0 user-select-all" id="stringLengthOutput" rows="5"
-                        readonly></textarea>
-                    <button class="btn btn-light col-2" onclick="getStringLength()">Get</button>
-                </div>
+            <div class="function shadowed">
+                <label class="func-name" for="inputString">String
+                    length:</label>
+                <textarea class="func-input" id="inputString" rows="2" placeholder="Enter your string"></textarea>
+                <button class="func-action" id="actionString"></button>
+                <textarea class="func-output" id="stringLengthOutput" rows="2" readonly></textarea>
             </div>
         </div>
     </div>
