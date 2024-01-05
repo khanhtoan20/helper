@@ -14,7 +14,7 @@
         <div class="checkbox-wrapper-35">
             <input value="private" name="switch" id="live" type="checkbox" class="switch">
             <label for="live">
-                <span class="switch-x-text">Live mode is</span>
+                <span class="switch-x-text">live_mode:</span>
                 <span class="switch-x-toggletext">
                     <span class="switch-x-unchecked"><span class="switch-x-hiddenlabel">Unchecked: </span>Off</span>
                     <span class="switch-x-checked"><span class="switch-x-hiddenlabel">Checked: </span>On</span>
@@ -24,7 +24,7 @@
         <div class="checkbox-wrapper-35">
             <input value="private" name="switch" id="dark" type="checkbox" class="switch">
             <label for="dark">
-                <span class="switch-x-text">Dark mode is</span>
+                <span class="switch-x-text">dark_mode:</span>
                 <span class="switch-x-toggletext">
                     <span class="switch-x-unchecked"><span class="switch-x-hiddenlabel">Unchecked: </span>Off</span>
                     <span class="switch-x-checked"><span class="switch-x-hiddenlabel">Checked: </span>On</span>
@@ -35,25 +35,22 @@
     <div class="wrapper">
         <div class="interface">
             <div class="function shadowed">
-                <label class="func-name" for="inputJson">Format
-                    JSON:</label>
+                <label class="func-name" for="inputJson">parseJSON</label>
                 <textarea class="func-input" id="inputJson" rows="5" placeholder='{ "key": "value" }'></textarea>
                 <button class="func-action" id="actionJson"></button>
                 <textarea class="func-output" id="formattedJsonOutput" rows="5" readonly></textarea>
             </div>
             <div class="function shadowed">
-                <label class="func-name" for="inputUrl">Decode
-                    URL:</label>
-                <textarea class="func-input" id="inputUrl" rows="2" placeholder="https://example.com"></textarea>
+                <label class="func-name" for="inputUrl">decodeURL</label>
+                <textarea class="func-input" id="inputUrl" rows="1" placeholder="https://example.com"></textarea>
                 <button class="func-action" id="actionUrl"></button>
-                <textarea class="func-output" id="decodedUrlOutput" rows="2" readonly></textarea>
+                <textarea class="func-output" id="decodedUrlOutput" rows="1" readonly></textarea>
             </div>
             <div class="function shadowed">
-                <label class="func-name" for="inputString">String
-                    length:</label>
-                <textarea class="func-input" id="inputString" rows="2" placeholder="Enter your string"></textarea>
+                <label class="func-name" for="inputString">string.length</label>
+                <textarea class="func-input" id="inputString" rows="1" placeholder="Enter your string"></textarea>
                 <button class="func-action" id="actionString"></button>
-                <textarea class="func-output" id="stringLengthOutput" rows="2" readonly></textarea>
+                <textarea class="func-output" id="stringLengthOutput" rows="1" readonly></textarea>
             </div>
         </div>
     </div>

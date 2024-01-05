@@ -9,6 +9,7 @@ const [darkMode, setDarkMode] = useState(document.getElementById('dark'));
 /**
  * DOM
  */
+const [body, setBody] = useState(document.body);
 const [url, setUrl] = useState(document.getElementById('inputUrl'));
 const [urlOutput, setUrlOutput] = useState(document.getElementById('decodedUrlOutput'));
 const [urlAction, setUrlAction] = useState(document.getElementById('actionUrl'));
@@ -25,7 +26,7 @@ const [jsonAction, setJsonAction] = useState(document.getElementById('actionJson
  * Function Declaration
  */
 
-function decodeURL() {
+const decodedUrl = function () {
     const inputUrl = url().value;
     try {
         const decodedUrl = decodeURIComponent(inputUrl);
@@ -35,13 +36,13 @@ function decodeURL() {
     }
 }
 
-function getStringLength() {
+const getStringLength = function () {
     const inputString = string().value;
     const stringLength = inputString.length;
     stringOutput().value = stringLength;
 }
 
-function formatJSON() {
+const formatJSON = function () {
     const inputJson = json().value;
     try {
         const formattedJson = JSON.stringify(JSON.parse(inputJson), null, 4);
@@ -51,26 +52,61 @@ function formatJSON() {
     }
 }
 
-/**
- * Event Handler
- */
-liveMode().addEventListener('change', () => {
-    if (liveMode().checked) {
+const switchLiveMode = function (status) {
+    if (status) {
         url().addEventListener('input', decodeURL);
         string().addEventListener('input', getStringLength);
         json().addEventListener('input', formatJSON);
+        localStorage.setItem('live-mode', liveMode().checked);
     } else {
         url().removeEventListener('input', decodeURL);
         string().removeEventListener('input', getStringLength);
         json().removeEventListener('input', formatJSON);
+        localStorage.setItem('live-mode', liveMode().checked);
     }
+}
+
+const switchDarkMode = function (status) {
+    if (status) {
+        document.body.classList.add('dark-mode');
+        localStorage.setItem('dark-mode', true);
+    } else {
+        document.body.classList.remove('dark-mode');
+        localStorage.setItem('dark-mode', false);
+    }
+}
+
+/**
+ * Event Handler
+ */
+liveMode().addEventListener('change', ({ target }) => {
+    switchLiveMode(target.checked);
 });
 
-darkMode().addEventListener('change', () => {
-    document.body.classList.toggle('dark-mode');
+darkMode().addEventListener('change', ({ target }) => {
+    switchDarkMode(target.checked);
 })
 
 urlAction().addEventListener('click', decodeURL);
 jsonAction().addEventListener('click', formatJSON);
 stringAction().addEventListener('click', getStringLength);
 
+document.addEventListener('DOMContentLoaded', (event) => {
+    console.warn('collecting... ', localStorage)
+    if (localStorage.getItem('dark-mode') === 'true') {
+        body().classList.add('dark-mode');
+        darkMode().checked = true;
+        switchDarkMode(true)
+    }
+
+    if (localStorage.getItem('live-mode') === 'true') {
+        liveMode().checked = true;
+        switchLiveMode(true);
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+
+    if (urlParams.get('env') === 'dev') {
+        body().classList.add('lord-mode');
+    }
+});

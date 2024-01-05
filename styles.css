@@ -1,40 +1,61 @@
 :root {
     --shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-    --body-bg-color: #c5cae9;
-    --setting-bg-color: #d1edff;
+    --body-bg-color: #FFFFFF;
+    --setting-bg-color: #0000000D;
     --setting-color: #181544;
-    --switch-on-bg-color: #2b67f5;
+    --switch-on-bg-color: #000000;
     --switch-off-bg-color: #c5cae9;
-    --func-bg-color: #ffffff;
+    --func-bg-color: #0000000D;
     --func-name-color: #181544;
-    --func-input-bg-color: #ffffff;
+    --func-input-bg-color: #F9F9F9;
     --func-input-color: #495057;
     --func-input-border-color: #c5cae9;
-    --func-output-bg-color: #ffffff;
+    --func-output-bg-color: #F9F9F9;
     --func-output-color: #495057;
     --func-output-border-color: #c5cae9;
-    --func-action-hover-bg-color: #d1edff;
+    --func-action-hover-bg-color: #c5cae98c;
     --func-action-bg-color: #f1f3ff;
     --func-action-border-color: #c5cae9;
 }
 
 .dark-mode {
-    --body-bg-color: #212121;
-    --setting-bg-color: #000000;
-    --setting-color: #FFFFFF;
+    --shadow: inset 0 1px 5px rgba(255, 255, 255, 0.2);
+    --body-bg-color: #000000;
+    --setting-bg-color: #FFFFFF33;
+    --setting-color: #3EA6FF;
     --switch-on-bg-color: #3d3d3d;
     --switch-off-bg-color: #aaaaaa;
-    --func-bg-color: #181818;
-    --func-name-color: #FFFFFF;
-    --func-input-bg-color: #323232;
+    --func-bg-color: #FFFFFF33;
+    --func-name-color: #F1F1F1;
+    --func-input-bg-color: #3d3d3d;
     --func-input-color: #FFFFFF;
     --func-input-border-color: #000000;
-    --func-output-bg-color: #323232;
+    --func-output-bg-color: #3d3d3d;
     --func-output-color: #FFFFFF;
     --func-output-border-color: #000000;
-    --func-action-hover-bg-color: #3d3d3d;
+    --func-action-hover-bg-color: rgba(255, 255, 255, 0.2);
     --func-action-bg-color: #212121;
     --func-action-border-color: #000000;
+}
+
+.lord-mode {
+    --shadow: inset 0 1px 5px rgba(255, 255, 255, 0.2);
+    --body-bg-color: #000000;
+    --setting-bg-color: #FFFFFF33;
+    --setting-color: #3EA6FF;
+    --switch-on-bg-color: #3d3d3d;
+    --switch-off-bg-color: #aaaaaa;
+    --func-bg-color: #FFFFFF33;
+    --func-name-color: #F1F1F1;
+    --func-input-bg-color: #000000;
+    --func-input-color: #16FF00;
+    --func-input-border-color: #ffffff30;
+    --func-output-bg-color: #000000;
+    --func-output-color: #16FF00;
+    --func-output-border-color: #ffffff30;
+    --func-action-hover-bg-color: rgba(255, 255, 255, 0.2);
+    --func-action-bg-color: #212121;
+    --func-action-border-color: #ffffff30;
 }
 
 body {
@@ -76,9 +97,8 @@ body::-webkit-scrollbar {
 }
 
 .func-input {
+    flex: 1;
     display: block;
-    width: 100%;
-    height: auto;
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     font-weight: 400;
@@ -89,9 +109,8 @@ body::-webkit-scrollbar {
     border: 1px solid var(--func-input-border-color);
     border-bottom: none;
     border-radius: 0.25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     border-radius: 0;
-    flex: 0 0 95%;
 }
 
 .func-input:focus-visible {
@@ -131,7 +150,7 @@ body::-webkit-scrollbar {
     font-size: 1rem;
     line-height: 1.5;
     border-radius: 0.25rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 .func-action:hover {
@@ -152,6 +171,7 @@ body::-webkit-scrollbar {
     background-color: var(--setting-bg-color);
     color: var(--setting-color);
     height: 50px;
+    font-weight: bold;
 }
 
 .checkbox-wrapper-35 .switch {
