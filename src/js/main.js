@@ -1,4 +1,57 @@
+import '../css/styles.css';
 import useState from './state.js';
+import githubIco from '../ico/github.svg'
+
+document.head.innerHTML += `
+    <link rel="icon" type="image/svg+xml" href="${githubIco}" />
+`;
+
+document.querySelector('#app').innerHTML = `
+<div class="setting">
+        <div class="checkbox-wrapper-35">
+            <input value="private" name="switch" id="live" type="checkbox" class="switch">
+            <label for="live">
+                <span class="switch-x-text">live_mode:</span>
+                <span class="switch-x-toggletext">
+                    <span class="switch-x-unchecked"><span class="switch-x-hiddenlabel">Unchecked: </span>Off</span>
+                    <span class="switch-x-checked"><span class="switch-x-hiddenlabel">Checked: </span>On</span>
+                </span>
+            </label>
+        </div>
+        <div class="checkbox-wrapper-35">
+            <input value="private" name="switch" id="dark" type="checkbox" class="switch">
+            <label for="dark">
+                <span class="switch-x-text">dark_mode:</span>
+                <span class="switch-x-toggletext">
+                    <span class="switch-x-unchecked"><span class="switch-x-hiddenlabel">Unchecked: </span>Off</span>
+                    <span class="switch-x-checked"><span class="switch-x-hiddenlabel">Checked: </span>On</span>
+                </span>
+            </label>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="interface">
+            <div class="function shadowed">
+                <label class="func-name" for="inputJson">parseJSON</label>
+                <textarea class="func-input" id="inputJson" rows="5" placeholder='{ "key": "value" }'></textarea>
+                <button class="func-action" id="actionJson"></button>
+                <textarea class="func-output" id="formattedJsonOutput" rows="5" readonly></textarea>
+            </div>
+            <div class="function shadowed">
+                <label class="func-name" for="inputUrl">decodeURL</label>
+                <textarea class="func-input" id="inputUrl" rows="1" placeholder="https://example.com"></textarea>
+                <button class="func-action" id="actionUrl"></button>
+                <textarea class="func-output" id="decodedUrlOutput" rows="1" readonly></textarea>
+            </div>
+            <div class="function shadowed">
+                <label class="func-name" for="inputString">string.length</label>
+                <textarea class="func-input" id="inputString" rows="1" placeholder="Enter your string"></textarea>
+                <button class="func-action" id="actionString"></button>
+                <textarea class="func-output" id="stringLengthOutput" rows="1" readonly></textarea>
+            </div>
+        </div>
+    </div>
+`;
 
 /**
  * Setting
@@ -54,12 +107,12 @@ const formatJSON = function () {
 
 const switchLiveMode = function (status) {
     if (status) {
-        url().addEventListener('input', decodeURL);
+        url().addEventListener('input', decodedUrl);
         string().addEventListener('input', getStringLength);
         json().addEventListener('input', formatJSON);
         localStorage.setItem('live-mode', liveMode().checked);
     } else {
-        url().removeEventListener('input', decodeURL);
+        url().removeEventListener('input', decodedUrl);
         string().removeEventListener('input', getStringLength);
         json().removeEventListener('input', formatJSON);
         localStorage.setItem('live-mode', liveMode().checked);
@@ -87,7 +140,7 @@ darkMode().addEventListener('change', ({ target }) => {
     switchDarkMode(target.checked);
 })
 
-urlAction().addEventListener('click', decodeURL);
+urlAction().addEventListener('click', decodedUrl);
 jsonAction().addEventListener('click', formatJSON);
 stringAction().addEventListener('click', getStringLength);
 

@@ -16,6 +16,7 @@
     --func-action-hover-bg-color: #c5cae98c;
     --func-action-bg-color: #f1f3ff;
     --func-action-border-color: #c5cae9;
+    --font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 .dark-mode {
@@ -60,10 +61,17 @@
 
 body {
     background-color: var(--body-bg-color);
+    font-family: var(--font-family);
+    margin: 0;
 }
 
 body::-webkit-scrollbar {
     display: none;
+}
+
+#app {
+    margin: 0;
+    padding: 0;
 }
 
 .wrapper {
@@ -111,6 +119,7 @@ body::-webkit-scrollbar {
     border-radius: 0.25rem;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     border-radius: 0;
+    box-sizing: border-box;
 }
 
 .func-input:focus-visible {
@@ -122,7 +131,6 @@ body::-webkit-scrollbar {
 }
 
 .func-output {
-    font-family: 'Courier New', monospace;
     white-space: pre-wrap;
     padding: 10px;
     background-color: var(--func-output-bg-color);
@@ -131,6 +139,7 @@ body::-webkit-scrollbar {
     overflow: auto;
     flex: 0 0 100%;
     color: var(--func-output-color);
+    box-sizing: border-box;
 }
 
 .func-action {
@@ -151,6 +160,7 @@ body::-webkit-scrollbar {
     line-height: 1.5;
     border-radius: 0.25rem;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
 }
 
 .func-action:hover {
